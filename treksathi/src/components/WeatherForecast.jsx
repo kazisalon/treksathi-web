@@ -119,53 +119,65 @@ const WeatherForecast = () => {
       </div>
 
       {weather && (
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-blue-700 mb-4">Current Weather</h2>
+        <div className="bg-white rounded-lg shadow-md p-6 bg-gradient-to-br from-blue-50 to-indigo-50">
+          <h2 className="text-2xl font-bold text-blue-700 mb-4 flex items-center">
+            <svg className="w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+            </svg>
+            Current Weather
+          </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-blue-50 p-4 rounded-lg">
+            <div className="bg-white/70 backdrop-blur-sm p-6 rounded-lg shadow-inner">
               <div className="text-center">
-                <div className="text-5xl font-bold text-blue-700">
+                <div className="text-6xl font-bold text-blue-700 mb-2">
                   {weather.temperature}°C
                 </div>
-                <div className="text-xl text-gray-700 mt-2">
+                <div className="text-xl text-gray-700 capitalize font-medium">
                   {weather.weatherDescription}
                 </div>
               </div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-3 rounded">
-                <div className="text-sm text-gray-600">Humidity</div>
-                <div className="text-xl font-semibold">{weather.humidity}%</div>
+              <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-inner hover:shadow-md transition-all">
+                <div className="text-sm text-gray-600 mb-1">Humidity</div>
+                <div className="text-2xl font-semibold text-blue-600">{weather.humidity}%</div>
               </div>
               
-              <div className="bg-gray-50 p-3 rounded">
-                <div className="text-sm text-gray-600">Wind Speed</div>
-                <div className="text-xl font-semibold">{weather.windSpeed} km/h</div>
+              <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-inner hover:shadow-md transition-all">
+                <div className="text-sm text-gray-600 mb-1">Wind Speed</div>
+                <div className="text-2xl font-semibold text-blue-600">{weather.windSpeed} km/h</div>
               </div>
               
-              <div className="bg-gray-50 p-3 rounded">
-                <div className="text-sm text-gray-600">Pressure</div>
-                <div className="text-xl font-semibold">{weather.pressure} hPa</div>
+              <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-inner hover:shadow-md transition-all">
+                <div className="text-sm text-gray-600 mb-1">Pressure</div>
+                <div className="text-2xl font-semibold text-blue-600">{weather.pressure} hPa</div>
               </div>
               
-              <div className="bg-gray-50 p-3 rounded">
-                <div className="text-sm text-gray-600">Visibility</div>
-                <div className="text-xl font-semibold">{weather.visibility} km</div>
+              <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-inner hover:shadow-md transition-all">
+                <div className="text-sm text-gray-600 mb-1">Visibility</div>
+                <div className="text-2xl font-semibold text-blue-600">{weather.visibility} km</div>
               </div>
             </div>
           </div>
           
           {weather.forecast && (
-            <div className="mt-6">
-              <h3 className="text-xl font-bold text-blue-700 mb-3">5-Day Forecast</h3>
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
+            <div className="mt-8">
+              <h3 className="text-xl font-bold text-blue-700 mb-4 flex items-center">
+                <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                5-Day Forecast
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 {weather.forecast.map((day, index) => (
-                  <div key={index} className="bg-gray-50 p-3 rounded text-center">
-                    <div className="text-sm font-medium">{day.date}</div>
-                    <div className="text-lg font-bold">{day.tempHigh}°/{day.tempLow}°</div>
-                    <div className="text-sm text-gray-600">{day.condition}</div>
+                  <div key={index} className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-inner hover:shadow-md transition-all">
+                    <div className="text-sm font-medium text-blue-600">{day.date}</div>
+                    <div className="text-2xl font-bold text-gray-800 my-2">{day.tempHigh}°
+                      <span className="text-lg text-gray-500">/{day.tempLow}°</span>
+                    </div>
+                    <div className="text-sm text-gray-600 capitalize">{day.condition}</div>
                   </div>
                 ))}
               </div>
